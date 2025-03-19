@@ -18,27 +18,35 @@ prices = []
 links = []
 
 for telephone in telephone_list:
-        title = telephone.text.strip()
-        titles.append(title)
+    title = telephone.text.strip()
+    titles.append(title)
 # print(titles)
 
 for telephone in telephone_price:
-        price = telephone.text.strip()
-        prices.append(price)
+    price = telephone.text.strip()
+    prices.append(price)
 
 
 for telephone in telephone_list:
     link = 'https://www.kivano.kg' + telephone.find('a').get('href')
     links.append(link)
 
+
 print(f'Название - {titles}\nЦена - {prices}\nСсылка - {links}')
 
 import json 
 
-with open ('zadanie1.json', 'w') as file:
-    json.dump(titles,file )
-    json.dump(prices,file)
-    json.dump(links,file)
+# with open ('zadanie1.json', 'w') as file:
+#     json.dump(titles,file )
+#     json.dump(prices,file)
+#     json.dump(links,file)
 
+data = {
+    'titles': titles,
+    'prices': prices,
+    'links': links
+}
 
+with open('zadanie1.json', 'w') as file:
+    json.dump(data, file)
 
